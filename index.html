@@ -1,36 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ga eens slapen, Peppi</title>
+    <title>Hacksimulator</title>
     <style>
         body {
+            background-color: black;
+            color: green;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 16px;
             text-align: center;
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
             margin: 0;
             padding: 0;
         }
-        h1 {
-            color: #333;
-            margin-top: 50px;
+        #hacking-text {
+            white-space: pre-wrap;
+            text-align: left;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 600px;
+            border: 2px solid green;
+            padding: 10px;
+            overflow-y: auto;
+            height: 400px;
         }
-        p {
-            font-size: 18px;
-            color: #555;
-        }
-        audio {
+        .button-container {
             margin-top: 20px;
+        }
+        .button {
+            background-color: black;
+            border: 2px solid green;
+            color: green;
+            font-size: 18px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: "Courier New", Courier, monospace;
+        }
+        .button:hover {
+            background-color: green;
+            color: black;
         }
     </style>
 </head>
 <body>
-    <h1>Ga eens slapen, Peppi!</h1>
-    <p>Zelfs de hazewindhond heeft zijn slaapliedje al aanstaan...</p>
-    
-    <!-- Slaapliedje dat automatisch afspeelt -->
-    <audio controls autoplay loop>
-        <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mpeg">
-        Je browser ondersteunt geen audio-element. Klik <a href="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3">hier</a> om het liedje te beluisteren.
-    </audio>
+    <h1>NEP-HACKSIMULATOR</h1>
+    <div id="hacking-text">Klaar om te beginnen...</div>
+    <div class="button-container">
+        <button class="button" onclick="startHacking()">Start Hack</button>
+    </div>
+
+    <script>
+        const hackingText = document.getElementById("hacking-text");
+
+        const messages = [
+            "[START] Verbinding maken met server...",
+            "[INFO] Beveiligingssleutel gevonden.",
+            "[ACCESS] Toegang tot netwerk verkregen.",
+            "[WARNING] Firewall doorbreken...",
+            "[ACCESS GRANTED] Volledige controle over apparaat!",
+            "[INFO] Downloaden van privégegevens gestart...",
+            "[COMPLETE] 50.000 bestanden gestolen.",
+            "[INFO] Locatiegegevens ontvangen.",
+            "[WARNING] Politie heeft deze activiteit gedetecteerd!",
+            "[HACK COMPLETE] Dit apparaat is volledig gehackt."
+        ];
+
+        let index = 0;
+
+        function startHacking() {
+            hackingText.innerHTML = ""; // Maak de text leeg
+            index = 0;
+            const interval = setInterval(() => {
+                if (index < messages.length) {
+                    hackingText.innerHTML += messages[index] + "\n";
+                    hackingText.scrollTop = hackingText.scrollHeight; // Scroll automatisch naar beneden
+                    index++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 1000);
+        }
+    </script>
 </body>
 </html>
